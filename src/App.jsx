@@ -41,7 +41,7 @@ function App() {
     setMeta("description", "Portafolio profesional de Pabblo, experto en IA y desarrollo Full Stack.");
     setMeta("og:title", "Pabblo Dev | Ingeniero Full Stack & IA", true);
     setMeta("og:description", "Explora mis proyectos de ingeniería y soluciones tecnológicas de vanguardia.", true);
-    setMeta("og:image", "https://www.misanosdorados.com/og-image.png", true);
+    setMeta("og:image", "https://www.misanosdorados.com/og-image.jpg", true);
     setMeta("og:url", "https://www.misanosdorados.com/", true);
     setMeta("og:type", "website", true);
   }, []);
