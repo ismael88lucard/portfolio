@@ -68,7 +68,7 @@ function App() {
       id: 3, 
       title: "Sistema de Despacho", 
       desc: "Identificador de llamadas y despacho de carreras con Python y PostgreSQL.",
-      img: "/proyecto3.jpeg" 
+      img: "/proyecto33.jpg" 
     },
     { 
       id: 4, 
