@@ -10,6 +10,37 @@ function App() {
   const springX = useSpring(mouseX, { stiffness: 60, damping: 25 });
   const springY = useSpring(mouseY, { stiffness: 60, damping: 25 });
 
+  // NUEVO: Efecto para el Favicon y Miniatura de WhatsApp
+  useEffect(() => {
+    // 1. Cambiar el título de la pestaña
+    document.title = "PABBLO | Full Stack & IA";
+
+    // 2. Configurar el Favicon (el icono del mundo)
+    const link = document.querySelector("link[rel~='icon']") || document.createElement('link');
+    link.rel = 'icon';
+    link.href = '/icono.png'; 
+    document.getElementsByTagName('head')[0].appendChild(link);
+
+    // 3. Función para crear/actualizar Meta Tags (WhatsApp/SEO)
+    const setMeta = (name, content, isProperty = false) => {
+      let meta = document.querySelector(isProperty ? `meta[property="${name}"]` : `meta[name="${name}"]`);
+      if (!meta) {
+        meta = document.createElement('meta');
+        if (isProperty) meta.setAttribute('property', name);
+        else meta.name = name;
+        document.head.appendChild(meta);
+      }
+      meta.content = content;
+    };
+
+    setMeta("description", "Portafolio profesional de Pabblo, experto en IA y desarrollo Full Stack.");
+    setMeta("og:title", "Pabblo Dev | Ingeniero Full Stack & IA", true);
+    setMeta("og:description", "Explora mis proyectos de ingeniería y soluciones tecnológicas de vanguardia.", true);
+    setMeta("og:image", "https://www.misanosdorados.com/og-image.png", true); // Asegúrate que la URL sea real
+    setMeta("og:url", "https://www.misanosdorados.com/", true);
+    setMeta("og:type", "website", true);
+  }, []);
+
   useEffect(() => {
     const handleMouseMove = (e) => {
       mouseX.set(e.clientX - 150);
@@ -74,11 +105,11 @@ function App() {
         <div style={{ 
           display: "flex", 
           flexDirection: "row", 
-          flexWrap: "nowrap", // Esto fuerza una sola línea
+          flexWrap: "nowrap", 
           gap: "20px", 
           width: "100%", 
           maxWidth: "1400px",
-          overflowX: "auto", // Permite scroll horizontal si la pantalla es muy pequeña
+          overflowX: "auto", 
           paddingBottom: "20px"
         }}>
           {proyectos.map((p) => (
@@ -88,8 +119,8 @@ function App() {
               onClick={() => setSelectedImg(p)}
               whileHover={{ y: -15, cursor: "zoom-in" }}
               style={{ 
-                flex: "1 1 0", // Hace que todos midan lo mismo
-                minWidth: "280px", // Evita que se aplasten demasiado
+                flex: "1 1 0", 
+                minWidth: "280px", 
                 background: "rgba(255,255,255,0.02)", borderRadius: "24px", overflow: "hidden", 
                 border: "1px solid rgba(255,255,255,0.06)", backdropFilter: "blur(20px)" 
               }}
@@ -129,7 +160,7 @@ function App() {
         )}
       </AnimatePresence>
 
-      {/* Botón WhatsApp Icono Original */}
+      {/* Botón WhatsApp */}
       <motion.a
         href="https://wa.me/593989271700" target="_blank" rel="noopener noreferrer"
         whileHover={{ scale: 1.1, backgroundColor: "rgba(37, 211, 102, 0.1)" }}
